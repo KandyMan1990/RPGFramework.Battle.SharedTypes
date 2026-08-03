@@ -1,0 +1,16 @@
+{
+    "name": "RPGFramework.Battle.SharedTypes",
+    "rootNamespace": "RPGFramework.Battle.SharedTypes",
+    "references": [
+        "RPGFramework.Core.SharedTypes"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
