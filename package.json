@@ -12,5 +12,8 @@
   "author": {
     "name": "Elliott Armstrong",
     "url": "https://github.com/KandyMan1990/RPGFramework.Battle.SharedTypes"
+  },
+  "dependencies": {
+    "com.rpgframework.core.sharedtypes": "0.2.0"
   }
 }
