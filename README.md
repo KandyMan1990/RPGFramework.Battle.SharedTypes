@@ -11,9 +11,10 @@ Requires Unity 6000.6 or newer and RPGFramework.Core.SharedTypes.
 - **`BattleFlags`** change how a battle runs, combined as a mask: no escape, no victory celebration, no spoils, a timed
   battle, a forced first strike for either side or neither, and no game over on defeat.
 - **`IBattleArgsStore`**: where `BattleArgs` are kept. Whatever starts a battle, such as a field script, sets it, and the
-  battle module reads it as it enters. `BattleArgsStore` keeps it in memory.
+  battle module reads it as it enters. Your global installer binds it to the Battle package's `BattleArgsStore`.
 - **`BattleCompleteState`** and **`IBattleCompleteStateStore`**: how the last battle ended (still going, victory, game
-  over or escape), for the module the player returns to. `BattleCompleteStateStore` keeps it in memory.
+  over or escape), for the module the player returns to. Your global installer binds it to the Battle package's
+  `BattleCompleteStateStore`.
 
 ```csharp
 battleArgsStore.Set(new BattleArgs(arena: 3, enemyGroup: 12, BattleFlags.DISABLE_ESCAPE, enemyLevel: 5));
