@@ -1,9 +1,9 @@
 {
   "name": "com.rpgframework.battle.sharedtypes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "RPG Framework Battle Shared Types",
   "description": "Shared types for the Battle RPGFramework package, other modules should reference these when necessary",
-  "unity": "6000.5",
+  "unity": "6000.6",
   "keywords": [
     "RPG Framework",
     "Battle",
@@ -14,6 +14,6 @@
     "url": "https://github.com/KandyMan1990/RPGFramework.Battle.SharedTypes"
   },
   "dependencies": {
-    "com.rpgframework.core.sharedtypes": "0.2.0"
+    "com.rpgframework.core.sharedtypes": "0.3.0"
   }
 }
