@@ -6,48 +6,49 @@ namespace RPGFramework.Battle.SharedTypes
     public enum BattleFlags : ushort
     {
         /// <summary>
-        /// Normal battles
+        /// A normal battle
         /// </summary>
         DEFAULT = 0,
 
         /// <summary>
-        /// Player cannot escape from battle
+        /// The party cannot run
         /// </summary>
         DISABLE_ESCAPE = 1 << 0,
 
         /// <summary>
-        /// Suppresses victory music, party members do not celebrate victory
+        /// No victory fanfare: the battle's music plays on after it ends, won or lost
         /// </summary>
-        DISABLE_VICTORY = 1 << 1,
+        DISABLE_VICTORY_FANFARE = 1 << 1,
 
         /// <summary>
-        /// Suppresses showing any kind of exp/money/items screens
+        /// The field's countdown timer carries on through the battle, which ends if it runs out
         /// </summary>
-        DISABLE_SPOILS = 1 << 2,
+        INHERIT_COUNTDOWN_TIMER = 1 << 2,
 
         /// <summary>
-        /// Battle must be completed before the timer reaches zero
+        /// No items or experience are won
         /// </summary>
-        TIMED = 1 << 3,
+        DISABLE_ITEM_AND_EXP_GAIN = 1 << 3,
 
         /// <summary>
-        /// Force the player to take action first
+        /// The music playing as the battle starts plays on as its battle music. A victory fanfare still replaces it,
+        /// unless <see cref="DISABLE_VICTORY_FANFARE" /> is set too
         /// </summary>
-        FORCE_PREEMPTIVE_ATTACK = 1 << 4,
+        USE_CURRENT_MUSIC = 1 << 4,
 
         /// <summary>
-        /// Force the enemy to take action first
+        /// The party acts first
         /// </summary>
-        FORCE_BACK_ATTACK = 1 << 5,
+        FORCE_PREEMPTIVE_ATTACK = 1 << 5,
 
         /// <summary>
-        /// Prevents both preemptive and back attack chances
+        /// The enemy acts first
         /// </summary>
-        DISABLE_PREEMPTIVE_AND_BACK_ATTACK = 1 << 6,
+        FORCE_BACK_ATTACK = 1 << 6,
 
         /// <summary>
-        /// Prevents the game from going to the game over screen upon defeat in battle
+        /// Neither side can strike first
         /// </summary>
-        DISABLE_GAME_OVER = 1 << 7,
+        DISABLE_PREEMPTIVE_AND_BACK_ATTACK = 1 << 7,
     }
 }
