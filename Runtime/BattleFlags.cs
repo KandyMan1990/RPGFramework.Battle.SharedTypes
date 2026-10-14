@@ -50,5 +50,17 @@ namespace RPGFramework.Battle.SharedTypes
         /// Neither side can strike first
         /// </summary>
         DISABLE_PREEMPTIVE_AND_BACK_ATTACK = 1 << 7,
+
+        /// <summary>
+        /// A countdown running out, in a battle or on the field, is not game over. Read from the battle mode only, never
+        /// from one battle's own flags
+        /// </summary>
+        DISABLE_GAME_OVER_ON_TIME_OUT = 1 << 8,
+
+        /// <summary>
+        /// Losing a battle is not game over: the party goes back where the battle began. Read from the battle mode only,
+        /// never from one battle's own flags
+        /// </summary>
+        DISABLE_GAME_OVER_ON_DEFEAT = 1 << 9,
     }
 }

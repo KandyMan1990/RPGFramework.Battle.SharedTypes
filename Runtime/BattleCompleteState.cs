@@ -5,14 +5,14 @@ namespace RPGFramework.Battle.SharedTypes
         BATTLE_STILL_ACTIVE = 0,
 
         /// <summary>
-        /// The party was defeated. Whether that ends the game is the game's policy, not the battle's
+        /// The party was defeated. Whether that ends the game is the battle mode's to say, not the battle's
         /// </summary>
-        GAME_OVER = 1,
+        DEFEAT = 1,
 
         ESCAPE = 2,
 
         /// <summary>
-        /// The countdown timer the battle inherited ran out
+        /// The countdown timer the battle inherited ran out. Whether that ends the game is the battle mode's to say
         /// </summary>
         OUT_OF_TIME = 3,
 
