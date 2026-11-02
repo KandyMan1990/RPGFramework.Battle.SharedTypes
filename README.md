@@ -7,14 +7,16 @@ Requires Unity 6000.6 or newer and RPGFramework.Core.SharedTypes.
 - **`IBattleModule`**: the battle module, as Core resolves it.
 - **`BattleConstants.MODULE_ID`**: its module id, 2.
 - **`BattleOutcomes.FINISHED`**: what the battle reports as it ends, for the game's module router to route.
-- **`BattleArgs`**: the battle to fight: an arena, an enemy group and an enemy level, as numbers your game defines, and
-  its **`BattleFlags`**.
+- **`BattleArgs`**: the battle to fight: an arena, an enemy group and an enemy level, as numbers your game defines, its
+  **`BattleFlags`**, and the transition that covers the screen as it starts, by its name's hash, or `0` for the module
+  router's. It is a struct, so `SetFlag` changes only the copy it is called on: set the flags when you make
+  it.
 - **`BattleFlags`** change how a battle runs, combined as a mask: no escape, no victory fanfare (the battle's music
   plays on), the field's countdown carried in, no items or experience won, the music playing kept as the battle music,
   and a forced first strike for either side or neither. Two more, `DISABLE_GAME_OVER_ON_DEFEAT` and
   `DISABLE_GAME_OVER_ON_TIME_OUT`, belong to the battle mode alone.
-- **`IBattleArgsStore`**: where `BattleArgs` are kept. Whatever starts a battle, such as a field script, sets it, and the
-  battle module reads it as it enters. Your global installer binds it to the Battle package's `BattleArgsStore`.
+- **`IBattleArgsStore`**: where `BattleArgs` are kept. Whatever starts a battle, such as a field script, sets it, and
+  the battle module reads it as it enters. Your global installer binds it to the Battle package's `BattleArgsStore`.
 - **`IBattleModeStore`**: the battle mode, a saved `BattleFlags` mask a script sets: the flags random battles will be
   fought with, and whether losing a battle or a countdown running out ends the game, which the game's module router
   reads after every battle. Your global installer binds it to the Battle package's `BattleModeStore`, which keeps
@@ -24,13 +26,10 @@ Requires Unity 6000.6 or newer and RPGFramework.Core.SharedTypes.
   Battle package's `BattleCompleteStateStore`.
 
 ```csharp
-battleArgsStore.Set(new BattleArgs(arena: 3, enemyGroup: 12, BattleFlags.DISABLE_ESCAPE, enemyLevel: 5));
+battleArgsStore.Set(new BattleArgs(arena: 3, enemyGroup: 12, BattleFlags.DISABLE_ESCAPE, enemyLevel: 5, transition: 0));
 ```
 
-## Not in this version
-
-- **`BattleArgs.SetFlag` changes only the copy it is called on**, since `BattleArgs` is a struct: set the flags when you
-  make it.
-- **The battle module that reads these is a shell**, so the flags and the enemy level aren't acted on yet, and its
-  result is a placeholder: won after three seconds, or lost if Cancel is pressed first.
-- **Random battles** aren't built, so nothing reads the battle mode's own battle flags yet.
+The Battle package's module is a shell. It plays the victory fanfare and moves on to the spoils as the flags say, and
+carries the countdown in, but it fights nothing: the enemy group and level, escape and the first-strike flags aren't
+read, and its result is a placeholder — won after three seconds, lost if Cancel is pressed, or out of time if a
+countdown it carries runs out first. Random battles aren't built yet.
