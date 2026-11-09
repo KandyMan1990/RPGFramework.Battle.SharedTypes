@@ -5,7 +5,7 @@ namespace RPGFramework.Battle.SharedTypes.Stores
     /// </summary>
     public interface IBattleArgsStore
     {
-        /// <summary>The next battle's arena, enemies, level and flags.</summary>
+        /// <summary>The next battle's enemies, arena, flags and cover.</summary>
         BattleArgs Args { get; }
 
         /// <summary>Sets the battle to fight next.</summary>
