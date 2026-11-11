@@ -7,9 +7,10 @@ Requires Unity 6000.6 or newer and RPGFramework.Core.SharedTypes.
 - **`IBattleModule`**: the battle module, as Core resolves it.
 - **`BattleConstants.MODULE_ID`**: its module id, 2.
 - **`BattleOutcomes.FINISHED`**: what the battle reports as it ends, for the game's module router to route.
-- **`BattleArgs`**: the battle to fight: what is fought, an enemy group as a number your game defines, where, by the hash
-  of the arena's name, its **`BattleFlags`**, and the transition that covers the screen as it starts, by its name's hash, or `0` for the module
-  router's. It is a struct, so `SetFlag` changes only the copy it is called on: set the flags when you make
+- **`BattleArgs`**: the battle to fight: its encounter, by the hash of its name — the Battle package's encounter database
+  says what is fought and at what level — where it is fought, by the hash of the arena's name, the **`BattleFlags`** of
+  this call, which the encounter's own join, and the transition that covers the screen as it starts, by its name's
+  hash, or `0` for the module router's. It is a struct, so `SetFlag` changes only the copy it is called on: set the flags when you make
   it.
 - **`BattleFlags`** change how a battle runs, combined as a mask: no escape, no victory fanfare (the battle's music
   plays on), the field's countdown carried in, no items or experience won, the music playing kept as the battle music,
@@ -26,10 +27,10 @@ Requires Unity 6000.6 or newer and RPGFramework.Core.SharedTypes.
   Battle package's `BattleCompleteStateStore`.
 
 ```csharp
-battleArgsStore.Set(new BattleArgs(enemyGroup: 12, arena: Fnv1a64.Hash("Forest"), BattleFlags.DISABLE_ESCAPE, transition: 0));
+battleArgsStore.Set(new BattleArgs(encounter: Fnv1a64.Hash("Wolves"), arena: Fnv1a64.Hash("Forest"), BattleFlags.DISABLE_ESCAPE, transition: 0));
 ```
 
 The Battle package's module is a shell. It plays the victory fanfare and moves on to the spoils as the flags say, and
-carries the countdown in, but it fights nothing: the enemy group, escape and the first-strike flags aren't
-read, and its result is a placeholder — won after three seconds, lost if Cancel is pressed, or out of time if a
-countdown it carries runs out first. Random battles aren't built yet.
+carries the countdown in, and loads the arena, but it fights nothing: the enemy group, the level, escape and
+the first-strike flags aren't read, and its result is a placeholder — won after three seconds, lost if Cancel is
+pressed, or out of time if a countdown it carries runs out first.
