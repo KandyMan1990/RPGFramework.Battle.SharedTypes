@@ -2,7 +2,7 @@
 
 What other modules need to start a battle and learn how it ended, without depending on the Battle package itself.
 
-Requires Unity 6000.6 or newer and RPGFramework.Core.SharedTypes.
+Requires Unity 6000.7 or newer and RPGFramework.Core.SharedTypes.
 
 - **`IBattleModule`**: the battle module, as Core resolves it.
 - **`BattleConstants.MODULE_ID`**: its module id, 2.
