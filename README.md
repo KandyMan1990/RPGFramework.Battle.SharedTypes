@@ -25,6 +25,11 @@ Requires Unity 6000.7 or newer and RPGFramework.Core.SharedTypes.
 - **`BattleCompleteState`** and **`IBattleCompleteStateStore`**: how the last battle ended (still going, defeat, escape,
   out of time or victory), for the router and the module the player returns to. Your global installer binds it to the
   Battle package's `BattleCompleteStateStore`.
+- **`IBattleArenaNames`** and **`IBattleEncounterNames`**, in the editor only: every arena's and every encounter's name,
+  for another module's editor to offer and check — Field's block editor and its Encounters tab find the Battle
+  package's through `TypeCache`.
+- **`IDebugBattleEncounterDatabase`** and **`IDebugBattleArenaDatabase`**, only where `ENABLE_RPG_FRAMEWORK_DEBUG` is
+  defined: every encounter and arena by name, for the debug room to start a battle with.
 
 ```csharp
 battleArgsStore.Set(new BattleArgs(encounter: Fnv1a64.Hash("Wolves"), arena: Fnv1a64.Hash("Forest"), BattleFlags.DISABLE_ESCAPE, transition: 0));
